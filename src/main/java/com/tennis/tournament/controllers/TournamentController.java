@@ -13,23 +13,24 @@ import org.springframework.web.bind.annotation.RestController;
 
 import com.tennis.tournament.models.Tournament;
 import com.tennis.tournament.repositories.TournamentRepository;
+import com.tennis.tournament.services.TournamentService;
 
 @RestController
 @RequestMapping("/api/v1")
 public class TournamentController {
 	
 	@Autowired
-	private TournamentRepository tournamentRepository;
+	private TournamentService tournamentService;
 
 	  @GetMapping("/tournaments")
-	  public List<Tournament> getAllTournaments() {
+	  public List<Tournament> listAll() {
 		
-		 return tournamentRepository.findAll();
+		 return tournamentService.findAll();
 	  }
 	  
 	  @PostMapping("/tournaments")
 	  public Tournament createTournament(@Valid @RequestBody Tournament tournament) {
-		  return tournamentRepository.save(tournament);
+		  return tournamentService.save(tournament);
 	  }
 	  
 }
