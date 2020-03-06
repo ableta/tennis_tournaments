@@ -42,8 +42,4 @@ public class Tournament {
 	@Column(name = "tournament_type")
 	private String tournamentType;
 
-
-	
-	
-	
 }

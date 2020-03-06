@@ -9,6 +9,7 @@ public class TournamentDTOConverter implements ModelConverter<Tournament, Tourna
 	public Tournament convertFromModelToEntity(TournamentDTO e) {
 
 		return Tournament.builder()
+				.id(e.getId())
 				.tournamentLocation(e.getTournamentLocation())
 				.tournamentName(e.getTournamentName())
 				.tournamentPoints(e.getTournamentPoints())
@@ -18,8 +19,14 @@ public class TournamentDTOConverter implements ModelConverter<Tournament, Tourna
 
 	@Override
 	public TournamentDTO convertFromEntityToModel(Tournament e) {
-		// TODO Auto-generated method stub
-		return null;
+ 		return TournamentDTO.builder()
+				.id(e.getId())
+ 				.tournamentLocation(e.getTournamentLocation())
+				.tournamentName(e.getTournamentName())
+				.tournamentPoints(e.getTournamentPoints())
+				.tournamentSurface(e.getTournamentSurface())
+				.tournamentType(e.getTournamentType()).build();
 	}
+
 
 }

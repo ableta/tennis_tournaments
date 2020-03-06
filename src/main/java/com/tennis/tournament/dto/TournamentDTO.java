@@ -9,6 +9,7 @@ import lombok.ToString;
 
 @Getter
 @Setter
+@Builder
 @ToString
 public class TournamentDTO implements Serializable{
 	

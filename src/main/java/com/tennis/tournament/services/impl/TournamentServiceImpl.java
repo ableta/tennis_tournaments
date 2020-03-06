@@ -20,8 +20,6 @@ import lombok.AllArgsConstructor;
 @AllArgsConstructor
 public class TournamentServiceImpl implements TournamentService {
 
-	private static Logger logger = (Logger) LoggerFactory.getLogger(TournamentServiceImpl.class);
-
 	private final TournamentRepository tournamentRepository;
 	
 	public static final TournamentDTOConverter TOURNAMENT_DTO_CONVERTER = new TournamentDTOConverter();
@@ -32,7 +30,7 @@ public class TournamentServiceImpl implements TournamentService {
 		List<Tournament> result = tournamentRepository.findAll();
 
 
-		logger.info(result);
+//		logger.info(result);
 		List<TournamentDTO> response = result.stream().map(index -> TOURNAMENT_DTO_CONVERTER.convertFromEntityToModel(index)).collect(Collectors.toList());
 		
 		
