@@ -2,35 +2,13 @@ package com.tennis.tournament.services;
 
 import java.util.List;
 
-import javax.validation.Valid;
+import com.fasterxml.jackson.core.JsonProcessingException;
+import com.tennis.tournament.dto.TournamentDTO;
 
-import org.springframework.stereotype.Service;
-import org.springframework.web.bind.annotation.RequestBody;
+public interface TournamentService {
 
-import com.tennis.tournament.models.Tournament;
-import com.tennis.tournament.repositories.TournamentRepository;
-
-@Service
-
-
-public class TournamentService {
-
-	private final TournamentRepository tournametRepository;
+	public List<TournamentDTO> listTournaments() throws JsonProcessingException;
 	
-	public TournamentService(TournamentRepository tournametRepository) {
-		this.tournametRepository = tournametRepository;
-	}
-	
-	public List<Tournament> findAll() {
-		
-		return tournametRepository.findAll();
-	}
-	
-	
-	  public Tournament save(Tournament tournament) {
-		  return tournametRepository.save(tournament);
-	  }
-	
-	
+//	public void createTournament(TournamentDTO tournamentDTO) throws JsonProcessingException;
 	
 }

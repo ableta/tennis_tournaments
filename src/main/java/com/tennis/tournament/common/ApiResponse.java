@@ -1,37 +1,35 @@
 package com.tennis.tournament.common;
 
-import java.util.List;
+import java.io.Serializable;
 
-public class ApiResponse<T> {
+import com.fasterxml.jackson.annotation.JsonInclude;
 
-	boolean messagePresent;
-	List<ApiMessage> messages;
-	T data;
-	
+import lombok.Getter;
+import lombok.Setter;
+
+@Getter
+@Setter
+@JsonInclude(JsonInclude.Include.NON_NULL)
+public class ApiResponse<T> implements Serializable {
+
+	private static final long serialVersionUID = 8319625608044077789L;
+
+	private T result;
+
+	private ApiError error;
+
 	public ApiResponse() {
-        super();
-    }
+		super();
+	}
 
-    public ApiResponse(List<ApiMessage> listMessage, T data) {
-        this.messages = listMessage;
-        this.data = data;
+	public ApiResponse(T result) {
+		super();
+		this.result = result;
+	}
 
-        if (listMessage != null && listMessage.size() > 0) {
-            messagePresent = true;
-        }
-    }
-
-
-    public ApiResponse(List<ApiMessage> listMessage) {
-        this.messages = listMessage;
-        if (listMessage != null && listMessage.size() > 0) {
-            messagePresent = true;
-        }
-    }
-
-    public ApiResponse(T data) {
-        this.data = data;
-        messagePresent = false;
-    }
-
+	public ApiResponse(ApiError error) {
+		super();
+		this.error = error;
+	}
 }
+

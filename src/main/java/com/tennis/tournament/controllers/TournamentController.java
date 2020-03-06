@@ -11,7 +11,10 @@ import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
 
-import com.tennis.tournament.models.Tournament;
+import com.fasterxml.jackson.core.JsonProcessingException;
+import com.tennis.tournament.common.ApiResponse;
+import com.tennis.tournament.dto.TournamentDTO;
+import com.tennis.tournament.entities.Tournament;
 import com.tennis.tournament.repositories.TournamentRepository;
 import com.tennis.tournament.services.TournamentService;
 
@@ -23,14 +26,11 @@ public class TournamentController {
 	private TournamentService tournamentService;
 
 	  @GetMapping("/tournaments")
-	  public List<Tournament> listAll() {
-		
-		 return tournamentService.findAll();
+	  public ApiResponse<List<TournamentDTO>> getAllTournaments() throws JsonProcessingException {
+		  
+		  return new ApiResponse<>(tournamentService.listTournaments());
+		  
 	  }
 	  
-	  @PostMapping("/tournaments")
-	  public Tournament createTournament(@Valid @RequestBody Tournament tournament) {
-		  return tournamentService.save(tournament);
-	  }
-	  
+//	  
 }
