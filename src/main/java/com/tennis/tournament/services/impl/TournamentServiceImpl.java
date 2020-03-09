@@ -29,14 +29,22 @@ public class TournamentServiceImpl implements TournamentService {
 		
 		List<Tournament> result = tournamentRepository.findAll();
 
-
 //		logger.info(result);
 		List<TournamentDTO> response = result.stream().map(index -> TOURNAMENT_DTO_CONVERTER.convertFromEntityToModel(index)).collect(Collectors.toList());
-		
-		
-		
+				
 		return response;
 	}
+
+	@Override
+	public void addTournament(TournamentDTO tournamentDTO) throws JsonProcessingException {
+
+		Tournament tournament = TOURNAMENT_DTO_CONVERTER.convertFromModelToEntity(tournamentDTO);
+		
+		tournamentRepository.save(tournament);
+		
+	}
+
+
 
 
 

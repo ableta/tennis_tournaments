@@ -11,10 +11,8 @@ import lombok.ToString;
 @Setter
 @Builder
 @ToString
-public class TournamentDTO implements Serializable{
+public class TournamentDTO {
 	
-	private static final long serialVersionUID = 1L;
-
 	private Long id;
 
 	private String  tournamentName;

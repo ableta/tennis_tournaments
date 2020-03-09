@@ -9,6 +9,7 @@ public interface TournamentService {
 
 	public List<TournamentDTO> listTournaments() throws JsonProcessingException;
 	
-//	public void createTournament(TournamentDTO tournamentDTO) throws JsonProcessingException;
+ 
+	public void addTournament(TournamentDTO tournamentDTO) throws JsonProcessingException;
 	
 }
